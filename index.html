@@ -3,549 +3,617 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Trouvez un notaire agréé au Maroc rapidement. Mise en relation gratuite pour vos actes notariaux : immobilier, succession, entreprise, mariage.">
-  <meta name="keywords" content="notaire maroc, notaire casablanca, notaire rabat, acte notarié maroc, notaire immobilier maroc">
-  <title>Notaris.ma — Trouvez votre notaire au Maroc</title>
+  <meta name="description" content="Notaris.ma — De l'idée d'acheter jusqu'à la signature chez le notaire. Accompagnement immobilier complet au Maroc : crédit, notaire, juridique.">
+  <meta name="keywords" content="notaire maroc, achat immobilier maroc, crédit immobilier maroc, notaire casablanca, accompagnement immobilier maroc">
+  <title>Notaris.ma — De l'idée d'acheter jusqu'à la signature chez le notaire</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --navy: #1a2744;
-      --navy-dark: #111b33;
-      --gold: #B8860B;
-      --gold-light: #E8C45A;
-      --gold-bg: #FEF9EC;
-      --text: #1a1a1a;
-      --text-muted: #6b7280;
-      --text-light: #9ca3af;
-      --border: #e5e7eb;
-      --bg: #ffffff;
-      --bg-alt: #f9f8f6;
-      --radius: 10px;
-      --radius-lg: 16px;
+      --navy: #0f1e3d; --navy-mid: #1a3260; --gold: #c49a2a;
+      --gold-light: #e8c45a; --gold-pale: #fdf6e3;
+      --white: #ffffff; --off-white: #f8f6f1;
+      --text: #1a1a1a; --text-muted: #6b7280; --text-light: #9ca3af;
+      --border: #e8e4dc; --r: 12px; --r-lg: 20px;
     }
-
     html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      color: var(--text);
-      background: var(--bg);
-      line-height: 1.6;
-    }
-
-    /* ── NAV ── */
+    /* NAV */
     nav {
       display: flex; align-items: center; justify-content: space-between;
-      padding: 1.25rem 5%;
-      border-bottom: 1px solid var(--border);
-      background: var(--bg);
-      position: sticky; top: 0; z-index: 100;
+      padding: 1.1rem 5%; background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(12px); border-bottom: 1px solid var(--border);
+      position: sticky; top: 0; z-index: 200;
     }
-    .logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px; font-weight: 600; color: var(--text);
-      text-decoration: none;
-    }
+    .logo { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--navy); text-decoration: none; letter-spacing: 0.5px; }
     .logo span { color: var(--gold); }
+    .logo sup { font-size: 10px; font-family: 'Jost', sans-serif; font-weight: 400; color: var(--text-muted); vertical-align: super; margin-left: 2px; letter-spacing: 1px; }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { font-size: 14px; color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--navy); }
     .nav-cta {
       background: var(--navy); color: white; border: none;
-      padding: 10px 22px; border-radius: 8px;
-      font-size: 14px; font-weight: 500;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      text-decoration: none; display: inline-block;
-      transition: background 0.2s;
+      padding: 10px 22px; border-radius: 8px; font-size: 14px; font-weight: 500;
+      cursor: pointer; font-family: 'Jost', sans-serif; text-decoration: none;
+      display: inline-block; transition: background 0.2s, transform 0.15s; letter-spacing: 0.3px;
     }
-    .nav-cta:hover { background: #243560; }
+    .nav-cta:hover { background: var(--navy-mid); transform: translateY(-1px); }
 
-    /* ── HERO ── */
-    .hero {
-      display: grid; grid-template-columns: 1fr 1fr;
-      min-height: 600px;
-    }
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 55% 45%; min-height: 640px; }
     .hero-left {
-      background: var(--navy);
-      padding: 5rem 5%;
+      background: var(--navy); padding: 5rem 5% 5rem 6%;
       display: flex; flex-direction: column; justify-content: center;
       position: relative; overflow: hidden;
     }
     .hero-left::before {
-      content: '';
-      position: absolute; top: -100px; right: -100px;
-      width: 320px; height: 320px; border-radius: 50%;
-      border: 50px solid rgba(184,134,11,0.1);
-      pointer-events: none;
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 400px; height: 400px; border-radius: 50%;
+      border: 60px solid rgba(196,154,42,0.08); pointer-events: none;
     }
     .hero-left::after {
-      content: '';
-      position: absolute; bottom: -80px; left: -80px;
-      width: 240px; height: 240px; border-radius: 50%;
-      border: 35px solid rgba(255,255,255,0.04);
-      pointer-events: none;
+      content: ''; position: absolute; bottom: -100px; left: -80px;
+      width: 280px; height: 280px; border-radius: 50%;
+      border: 40px solid rgba(255,255,255,0.04); pointer-events: none;
     }
     .badge {
-      display: inline-flex; align-items: center; gap: 7px;
-      background: rgba(184,134,11,0.18); color: var(--gold-light);
-      padding: 7px 16px; border-radius: 20px;
-      font-size: 12px; font-weight: 500; letter-spacing: 0.4px;
-      margin-bottom: 1.75rem; width: fit-content;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(196,154,42,0.15); border: 1px solid rgba(196,154,42,0.25);
+      color: var(--gold-light); padding: 7px 16px; border-radius: 30px;
+      font-size: 11px; font-weight: 500; letter-spacing: 1px; text-transform: uppercase;
+      margin-bottom: 2rem; width: fit-content; animation: fadeUp 0.6s ease both;
     }
-    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); flex-shrink: 0; }
+    .badge-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold-light); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 44px; line-height: 1.18; color: white;
-      font-weight: 600; margin-bottom: 1.25rem;
+      font-family: 'Cormorant Garamond', serif; font-size: 50px; line-height: 1.12;
+      color: white; font-weight: 500; margin-bottom: 1.5rem;
+      animation: fadeUp 0.6s ease 0.1s both;
     }
-    .hero-title em { color: var(--gold-light); font-style: normal; }
+    .hero-title em { color: var(--gold-light); font-style: italic; }
     .hero-sub {
-      font-size: 16px; color: rgba(255,255,255,0.62);
-      line-height: 1.75; margin-bottom: 2.5rem; font-weight: 300;
-      max-width: 420px;
+      font-size: 16px; color: rgba(255,255,255,0.6); line-height: 1.8;
+      margin-bottom: 3rem; font-weight: 300; max-width: 440px;
+      animation: fadeUp 0.6s ease 0.2s both;
     }
-    .stats { display: flex; gap: 2.5rem; }
-    .stat-num { font-size: 26px; font-weight: 500; color: white; }
-    .stat-label { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 3px; }
+    .hero-steps { display: flex; flex-direction: column; gap: 0.75rem; animation: fadeUp 0.6s ease 0.3s both; }
+    .hero-step { display: flex; align-items: center; gap: 12px; color: rgba(255,255,255,0.75); font-size: 14px; }
+    .hero-step-num {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: rgba(196,154,42,0.2); border: 1px solid rgba(196,154,42,0.4);
+      color: var(--gold-light); font-size: 11px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: 600;
+    }
+    .hero-right { background: var(--off-white); padding: 3rem 4%; display: flex; align-items: center; justify-content: center; }
+    @keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
 
-    .hero-right {
-      background: var(--bg-alt);
-      padding: 3rem 5%;
-      display: flex; align-items: center; justify-content: center;
+    /* FORM */
+    .form-wrapper {
+      background: var(--white); border: 1px solid var(--border); border-radius: var(--r-lg);
+      padding: 2.25rem 2rem; width: 100%; max-width: 460px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15); animation: fadeUp 0.6s ease 0.15s both;
     }
+    .progress-area { margin-bottom: 1.75rem; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-weight: 500; }
+    .progress-label .pct { color: var(--navy); font-weight: 600; }
+    .progress-track { height: 4px; background: #e8e4dc; border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg, var(--navy), var(--gold)); border-radius: 10px; transition: width 0.5s cubic-bezier(0.4,0,0.2,1); }
+    .step-header { margin-bottom: 1.5rem; }
+    .step-tag { font-size: 11px; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .step-title { font-family: 'Cormorant Garamond', serif; font-size: 21px; font-weight: 600; color: var(--navy); line-height: 1.3; }
 
-    /* ── FORM CARD ── */
-    .form-card {
-      background: var(--bg);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 2.25rem 2rem;
-      width: 100%; max-width: 440px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.07);
+    .options-grid { display: flex; flex-direction: column; gap: 10px; }
+    .options-grid.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .option-card {
+      border: 1.5px solid var(--border); border-radius: var(--r); padding: 13px 15px;
+      cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 11px; background: var(--white);
     }
-    .form-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px; font-weight: 600; margin-bottom: 0.35rem;
-    }
-    .form-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 1.5rem; }
+    .option-card:hover { border-color: var(--navy); background: #f0f4ff; }
+    .option-card.selected { border-color: var(--navy); background: #eef1fa; box-shadow: 0 0 0 3px rgba(15,30,61,0.08); }
+    .option-icon { width: 36px; height: 36px; border-radius: 9px; background: var(--off-white); display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; transition: background 0.2s; }
+    .option-card.selected .option-icon { background: var(--gold-pale); }
+    .option-text { flex: 1; }
+    .option-name { font-size: 13px; font-weight: 500; color: var(--navy); }
+    .option-sub { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+    .option-check { width: 20px; height: 20px; border-radius: 50%; border: 2px solid var(--border); flex-shrink: 0; transition: all 0.2s; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; }
+    .option-card.selected .option-check { background: var(--navy); border-color: var(--navy); }
 
-    .form-group { margin-bottom: 14px; }
-    .form-group label {
-      display: block; font-size: 12px; font-weight: 500;
-      color: var(--text-muted); margin-bottom: 5px; letter-spacing: 0.3px;
-    }
-    .form-group input,
-    .form-group select,
-    .form-group textarea {
-      width: 100%; padding: 10px 14px; font-size: 14px;
-      border: 1px solid var(--border); border-radius: 8px;
-      background: var(--bg); color: var(--text);
-      font-family: 'DM Sans', sans-serif;
-      transition: border-color 0.2s, box-shadow 0.2s;
+    .fields-grid { display: flex; flex-direction: column; gap: 13px; }
+    .fields-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .field-group { display: flex; flex-direction: column; gap: 5px; }
+    .field-group label { font-size: 12px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.3px; }
+    .field-group input, .field-group select {
+      padding: 11px 14px; font-size: 14px; border: 1.5px solid var(--border);
+      border-radius: 9px; background: var(--white); color: var(--text);
+      font-family: 'Jost', sans-serif; transition: border-color 0.2s, box-shadow 0.2s;
       appearance: none; -webkit-appearance: none;
     }
-    .form-group select {
+    .field-group select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat; background-position: right 14px center;
-      padding-right: 36px;
+      background-repeat: no-repeat; background-position: right 14px center; padding-right: 36px;
     }
-    .form-group input:focus,
-    .form-group select:focus,
-    .form-group textarea:focus {
-      outline: none; border-color: var(--navy);
-      box-shadow: 0 0 0 3px rgba(26,39,68,0.08);
-    }
-    .form-group textarea { resize: vertical; min-height: 80px; }
+    .field-group input:focus, .field-group select:focus { outline: none; border-color: var(--navy); box-shadow: 0 0 0 3px rgba(15,30,61,0.08); }
+    .field-group.error input, .field-group.error select { border-color: #dc2626; }
+    .field-error-msg { font-size: 11px; color: #dc2626; }
 
-    .submit-btn {
-      width: 100%; padding: 13px; margin-top: 6px;
-      background: var(--gold); color: white; border: none;
-      border-radius: 8px; font-size: 15px; font-weight: 500;
-      cursor: pointer; font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s, transform 0.1s;
-      letter-spacing: 0.2px;
-    }
-    .submit-btn:hover { background: #9a700a; }
-    .submit-btn:active { transform: scale(0.99); }
+    .form-nav { display: flex; gap: 10px; margin-top: 1.75rem; align-items: center; }
+    .btn-back { padding: 11px 18px; border-radius: 9px; border: 1.5px solid var(--border); background: transparent; color: var(--text-muted); font-size: 14px; font-weight: 500; cursor: pointer; font-family: 'Jost', sans-serif; transition: all 0.2s; }
+    .btn-back:hover { border-color: var(--navy); color: var(--navy); }
+    .btn-next { flex: 1; padding: 13px; border-radius: 9px; background: var(--navy); color: white; border: none; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s, transform 0.15s; letter-spacing: 0.3px; }
+    .btn-next:hover { background: var(--navy-mid); transform: translateY(-1px); }
+    .btn-submit { flex: 1; padding: 13px; border-radius: 9px; background: var(--gold); color: white; border: none; font-size: 15px; font-weight: 500; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s, transform 0.15s; letter-spacing: 0.3px; }
+    .btn-submit:hover { background: #a8831e; transform: translateY(-1px); }
 
-    .privacy {
-      font-size: 11px; color: var(--text-light);
-      text-align: center; margin-top: 10px; line-height: 1.5;
-    }
+    .form-step { display: none; }
+    .form-step.active { display: block; animation: stepIn 0.35s ease; }
+    @keyframes stepIn { from{opacity:0;transform:translateX(16px)} to{opacity:1;transform:translateX(0)} }
+    .privacy-note { font-size: 11px; color: var(--text-light); text-align: center; margin-top: 12px; line-height: 1.5; }
 
-    /* ── SUCCESS ── */
-    .success-msg { display: none; text-align: center; padding: 2.5rem 1rem; }
-    .success-check {
-      width: 60px; height: 60px;
-      background: #e8f5e9; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 1.25rem; font-size: 26px;
-    }
-    .success-msg h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 21px; margin-bottom: 0.5rem;
-    }
-    .success-msg p { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .form-success { display: none; text-align: center; padding: 2.5rem 1rem; }
+    .success-icon { width: 64px; height: 64px; background: linear-gradient(135deg, #d4edda, #c3e6cb); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 28px; }
+    .form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--navy); margin-bottom: 0.75rem; }
+    .form-success p { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .success-details { margin-top: 1.5rem; padding: 1rem 1.25rem; background: var(--off-white); border-radius: var(--r); font-size: 13px; color: var(--text-muted); text-align: left; border: 1px solid var(--border); line-height: 1.8; }
+    .success-details strong { color: var(--navy); }
 
-    /* ── TRUST BAR ── */
-    .trust-bar {
-      background: var(--bg-alt);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 1.75rem 5%;
-      display: flex; align-items: center;
-      justify-content: space-around; flex-wrap: wrap; gap: 1rem;
-    }
+    /* TRUST */
+    .trust-bar { background: var(--navy); padding: 1.5rem 5%; display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 1rem; }
     .trust-item { display: flex; align-items: center; gap: 10px; }
-    .trust-icon { font-size: 20px; }
-    .trust-text { font-size: 14px; font-weight: 500; }
+    .trust-icon { font-size: 18px; }
+    .trust-text { font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.8); }
 
-    /* ── SERVICES ── */
-    .services { padding: 5rem 5%; background: var(--bg); }
-    .section-label {
-      font-size: 12px; font-weight: 500; letter-spacing: 1.2px;
-      color: var(--gold); text-transform: uppercase; margin-bottom: 0.6rem;
-    }
-    .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px; font-weight: 600; margin-bottom: 0.6rem;
-    }
-    .section-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 2.5rem; }
+    /* SECTIONS */
+    .section { padding: 5rem 5%; }
+    .section-alt { background: var(--off-white); }
+    .section-label { font-size: 11px; font-weight: 600; letter-spacing: 1.5px; color: var(--gold); text-transform: uppercase; margin-bottom: 0.75rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 36px; font-weight: 500; color: var(--navy); margin-bottom: 0.6rem; line-height: 1.2; }
+    .section-sub { font-size: 15px; color: var(--text-muted); margin-bottom: 3rem; max-width: 520px; font-weight: 300; }
 
-    .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;
-    }
-    .service-card {
-      border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 1.5rem; background: var(--bg);
-      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-    }
-    .service-card:hover {
-      border-color: var(--gold); transform: translateY(-3px);
-      box-shadow: 0 8px 24px rgba(184,134,11,0.1);
-    }
-    .service-icon {
-      width: 42px; height: 42px; background: var(--gold-bg);
-      border-radius: 10px; display: flex; align-items: center;
-      justify-content: center; margin-bottom: 1rem; font-size: 20px;
-    }
-    .service-name { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
-    .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .service-card { border: 1px solid var(--border); border-radius: var(--r); padding: 1.75rem 1.5rem; background: var(--white); transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s; }
+    .service-card:hover { border-color: var(--gold); transform: translateY(-4px); box-shadow: 0 12px 32px rgba(196,154,42,0.12); }
+    .service-icon { width: 44px; height: 44px; background: var(--gold-pale); border-radius: 11px; display: flex; align-items: center; justify-content: center; margin-bottom: 1rem; font-size: 22px; }
+    .service-name { font-size: 15px; font-weight: 600; margin-bottom: 8px; color: var(--navy); }
+    .service-desc { font-size: 13px; color: var(--text-muted); line-height: 1.7; }
 
-    /* ── HOW IT WORKS ── */
-    .how { background: var(--bg-alt); padding: 5rem 5%; }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 2.5rem; }
-    .step { text-align: center; }
-    .step-num {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--navy); color: white;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 18px; font-weight: 500; margin: 0 auto 1rem;
-      font-family: 'Playfair Display', serif;
-    }
-    .step-title { font-size: 16px; font-weight: 500; margin-bottom: 6px; }
-    .step-desc { font-size: 14px; color: var(--text-muted); line-height: 1.6; }
+    .steps-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; position: relative; }
+    .steps-grid::before { content: ''; position: absolute; top: 28px; left: 10%; right: 10%; height: 1px; background: linear-gradient(90deg, transparent, rgba(196,154,42,0.4), transparent); }
+    .step-item { text-align: center; padding: 0 0.75rem; position: relative; }
+    .step-num { width: 56px; height: 56px; border-radius: 50%; background: var(--navy); color: white; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; margin: 0 auto 1.25rem; border: 3px solid var(--white); box-shadow: 0 0 0 1px var(--border); position: relative; z-index: 1; }
+    .step-name { font-size: 13px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+    .step-desc { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
 
-    /* ── CTA ── */
-    .cta-section {
-      background: var(--navy); padding: 4rem 5%; text-align: center;
-    }
-    .cta-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 30px; color: white; margin-bottom: 0.75rem;
-    }
-    .cta-sub { font-size: 15px; color: rgba(255,255,255,0.6); margin-bottom: 2rem; }
-    .cta-btn {
-      background: var(--gold); color: white; border: none;
-      padding: 14px 36px; border-radius: 8px;
-      font-size: 15px; font-weight: 500; cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      transition: background 0.2s;
-      text-decoration: none; display: inline-block;
-    }
-    .cta-btn:hover { background: #9a700a; }
+    .faq-list { max-width: 720px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.25rem 0; }
+    .faq-q { font-size: 15px; font-weight: 500; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 1rem; user-select: none; }
+    .faq-arrow { font-size: 20px; transition: transform 0.3s; color: var(--gold); flex-shrink: 0; }
+    .faq-item.open .faq-arrow { transform: rotate(45deg); }
+    .faq-a { font-size: 14px; color: var(--text-muted); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s; font-weight: 300; }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 0.75rem; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--bg); padding: 1.75rem 5%;
-      border-top: 1px solid var(--border);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: 1rem;
-      font-size: 13px; color: var(--text-muted);
-    }
-    footer strong { color: var(--text); }
-    footer a { color: var(--text-muted); text-decoration: none; }
-    footer a:hover { color: var(--gold); }
+    .cta-section { background: var(--navy); padding: 5rem 5%; text-align: center; position: relative; overflow: hidden; }
+    .cta-section::before { content: ''; position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 600px; height: 600px; border-radius: 50%; border: 80px solid rgba(196,154,42,0.05); pointer-events: none; }
+    .cta-title { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: white; font-weight: 500; margin-bottom: 0.75rem; position: relative; }
+    .cta-sub { font-size: 16px; color: rgba(255,255,255,0.55); margin-bottom: 2.5rem; font-weight: 300; position: relative; }
+    .cta-btn { background: var(--gold); color: white; border: none; padding: 16px 40px; border-radius: 10px; font-size: 16px; font-weight: 500; cursor: pointer; font-family: 'Jost', sans-serif; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; position: relative; letter-spacing: 0.3px; }
+    .cta-btn:hover { background: #a8831e; transform: translateY(-2px); }
 
-    /* ── WHATSAPP FLOAT ── */
+    footer { background: #080f1e; padding: 2.5rem 5%; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; align-items: start; }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: white; margin-bottom: 0.6rem; }
+    .footer-logo span { color: var(--gold); }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.4); font-weight: 300; line-height: 1.6; }
+    .footer-col-title { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.4); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; }
+    .footer-links { display: flex; flex-direction: column; gap: 0.5rem; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,0.5); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom { background: #040912; padding: 1rem 5%; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; font-size: 12px; color: rgba(255,255,255,0.25); }
+    .footer-bottom a { color: rgba(255,255,255,0.35); text-decoration: none; }
+
+    /* WHATSAPP — large et visible */
     .wa-float {
       position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      width: 56px; height: 56px; border-radius: 50%;
-      background: #25D366; color: white;
+      width: 74px; height: 74px; border-radius: 50%;
+      background: #25D366;
       display: flex; align-items: center; justify-content: center;
-      box-shadow: 0 4px 16px rgba(37,211,102,0.4);
-      text-decoration: none; font-size: 26px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 8px 28px rgba(37,211,102,0.55), 0 3px 10px rgba(0,0,0,0.25);
+      text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
     }
-    .wa-float:hover { transform: scale(1.08); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
+    .wa-float:hover { transform: scale(1.1); box-shadow: 0 12px 36px rgba(37,211,102,0.65), 0 4px 14px rgba(0,0,0,0.25); }
+    .wa-float::before { content: ''; position: absolute; inset: -5px; border-radius: 50%; border: 2.5px solid rgba(37,211,102,0.4); animation: wa-ring 2.5s infinite; }
+    @keyframes wa-ring { 0%{transform:scale(1);opacity:0.7} 100%{transform:scale(1.35);opacity:0} }
+    .wa-tooltip { position: absolute; right: 86px; top: 50%; transform: translateY(-50%); background: var(--navy); color: white; padding: 9px 16px; border-radius: 9px; font-size: 13px; font-weight: 500; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity 0.2s; font-family: 'Jost', sans-serif; box-shadow: 0 4px 16px rgba(0,0,0,0.2); }
+    .wa-tooltip::after { content: ''; position: absolute; right: -6px; top: 50%; transform: translateY(-50%); border: 6px solid transparent; border-right: none; border-left-color: var(--navy); }
+    .wa-float:hover .wa-tooltip { opacity: 1; }
 
-    /* ── ERROR STATE ── */
-    .field-error { border-color: #e24b4a !important; }
-    .error-msg { font-size: 11px; color: #e24b4a; margin-top: 4px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       .hero { grid-template-columns: 1fr; }
-      .hero-left { padding: 3rem 5%; }
-      .hero-title { font-size: 32px; }
+      .hero-title { font-size: 36px; }
       .hero-right { padding: 2.5rem 5%; }
       .services-grid { grid-template-columns: 1fr 1fr; }
-      .steps { grid-template-columns: 1fr; gap: 1.5rem; }
-      .stats { gap: 1.5rem; }
+      .steps-grid { grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+      .steps-grid::before { display: none; }
+      .nav-links { display: none; }
+      footer { grid-template-columns: 1fr; }
     }
-    @media (max-width: 480px) {
+    @media (max-width: 600px) {
+      .hero-title { font-size: 28px; }
       .services-grid { grid-template-columns: 1fr; }
-      .trust-bar { justify-content: flex-start; }
-      footer { flex-direction: column; text-align: center; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .section { padding: 3.5rem 5%; }
+      .options-grid.two-col { grid-template-columns: 1fr; }
+      .fields-row { grid-template-columns: 1fr; }
+      .cta-title { font-size: 28px; }
+      .wa-float { width: 66px; height: 66px; bottom: 20px; right: 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav>
-    <a href="#" class="logo">notaris<span>.</span>ma</a>
-    <a href="#formulaire" class="nav-cta">Trouver un notaire</a>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-left">
-      <div class="badge">
-        <div class="badge-dot"></div>
-        Plateforme notariale au Maroc
-      </div>
-      <h1 class="hero-title">
-        Votre notaire au <em>Maroc</em>,<br>en quelques clics
-      </h1>
-      <p class="hero-sub">
-        Achat immobilier, succession, création d'entreprise… Trouvez le notaire qu'il vous faut, partout au Maroc. Rapidement et gratuitement.
-      </p>
-      <div class="stats">
-        <div>
-          <div class="stat-num">12</div>
-          <div class="stat-label">Régions couvertes</div>
-        </div>
-        <div>
-          <div class="stat-num">48h</div>
-          <div class="stat-label">Délai de mise en relation</div>
-        </div>
-        <div>
-          <div class="stat-num">100%</div>
-          <div class="stat-label">Gratuit</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-right">
-      <div class="form-card" id="formulaire">
-
-        <div id="form-content">
-          <div class="form-title">Décrivez votre besoin</div>
-          <div class="form-sub">Mise en relation gratuite avec un notaire disponible</div>
-
-          <div class="form-group">
-            <label for="f-name">Votre prénom et nom *</label>
-            <input type="text" id="f-name" placeholder="Ex : Karim Benali" autocomplete="name">
-          </div>
-          <div class="form-group">
-            <label for="f-phone">Téléphone (WhatsApp) *</label>
-            <input type="tel" id="f-phone" placeholder="+212 6XX XXX XXX" autocomplete="tel">
-          </div>
-          <div class="form-group">
-            <label for="f-email">Email</label>
-            <input type="email" id="f-email" placeholder="votre@email.com" autocomplete="email">
-          </div>
-          <div class="form-group">
-            <label for="f-city">Ville *</label>
-            <select id="f-city">
-              <option value="">Sélectionner votre ville</option>
-              <option>Casablanca</option>
-              <option>Rabat</option>
-              <option>Marrakech</option>
-              <option>Fès</option>
-              <option>Tanger</option>
-              <option>Agadir</option>
-              <option>Meknès</option>
-              <option>Oujda</option>
-              <option>Kenitra</option>
-              <option>Tétouan</option>
-              <option>Autre ville</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="f-type">Type de démarche *</label>
-            <select id="f-type">
-              <option value="">Choisir le type de démarche</option>
-              <option>Achat / vente immobilier</option>
-              <option>Succession / héritage</option>
-              <option>Création d'entreprise</option>
-              <option>Mariage / divorce</option>
-              <option>Donation</option>
-              <option>Authentification / légalisation</option>
-              <option>Autre</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="f-msg">Message (optionnel)</label>
-            <textarea id="f-msg" placeholder="Décrivez brièvement votre situation…"></textarea>
-          </div>
-
-          <button class="submit-btn" onclick="handleSubmit()">
-            Être mis en relation gratuitement →
-          </button>
-          <p class="privacy">🔒 Vos données sont confidentielles et ne seront jamais revendues.</p>
-        </div>
-
-        <div class="success-msg" id="success-msg">
-          <div class="success-check">✓</div>
-          <h3>Demande envoyée !</h3>
-          <p>Un notaire partenaire vous contactera sous 48h.<br>Merci de votre confiance.</p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-item"><span class="trust-icon">🔒</span><span class="trust-text">Données confidentielles</span></div>
-    <div class="trust-item"><span class="trust-icon">⚡</span><span class="trust-text">Réponse sous 48h</span></div>
-    <div class="trust-item"><span class="trust-icon">✅</span><span class="trust-text">Notaires agréés</span></div>
-    <div class="trust-item"><span class="trust-icon">🇲🇦</span><span class="trust-text">Partout au Maroc</span></div>
-    <div class="trust-item"><span class="trust-icon">🎁</span><span class="trust-text">Service 100% gratuit</span></div>
+<nav>
+  <a href="#" class="logo">notaris<span>.</span>ma <sup>BETA</sup></a>
+  <div class="nav-links">
+    <a href="#services">Services</a>
+    <a href="#comment">Comment ça marche</a>
+    <a href="#faq">FAQ</a>
+    <a href="mailto:contact@notaris.ma">Contact</a>
   </div>
+  <a href="#demarrer" class="nav-cta">Démarrer mon projet</a>
+</nav>
 
-  <!-- SERVICES -->
-  <section class="services">
-    <div class="section-label">Nos domaines</div>
-    <h2 class="section-title">Tous vos actes notariaux</h2>
-    <p class="section-sub">Peu importe votre démarche, nous avons le bon notaire.</p>
-    <div class="services-grid">
-      <div class="service-card">
-        <div class="service-icon">🏠</div>
-        <div class="service-name">Immobilier</div>
-        <div class="service-desc">Achat, vente, hypothèque, contrat de bail, état des lieux notarié.</div>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="badge"><div class="badge-dot"></div>Plateforme d'accompagnement immobilier</div>
+    <h1 class="hero-title">De l'idée d'acheter jusqu'à la<br><em>signature chez le notaire</em></h1>
+    <p class="hero-sub">Notaris.ma vous accompagne à chaque étape de votre projet immobilier au Maroc : financement, recherche de bien, choix du notaire et accompagnement juridique.</p>
+    <div class="hero-steps">
+      <div class="hero-step"><div class="hero-step-num">1</div><span>Décrivez votre projet en 2 minutes</span></div>
+      <div class="hero-step"><div class="hero-step-num">2</div><span>Nous analysons votre situation</span></div>
+      <div class="hero-step"><div class="hero-step-num">3</div><span>Un expert vous contacte sous 48h</span></div>
+    </div>
+  </div>
+  <div class="hero-right" id="demarrer">
+    <div class="form-wrapper">
+      <div class="progress-area">
+        <div class="progress-label">
+          <span id="step-label">Étape 1 sur 6</span>
+          <span class="pct" id="step-pct">16%</span>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="progress-fill" style="width:16%"></div></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">👨‍👩‍👧</div>
-        <div class="service-name">Famille & Succession</div>
-        <div class="service-desc">Héritage, testament, tutelle, donation entre vifs.</div>
+
+      <!-- ÉTAPE 1 -->
+      <div class="form-step active" id="step-1">
+        <div class="step-header"><div class="step-tag">Étape 1 — Votre projet</div><div class="step-title">Quel est votre projet ?</div></div>
+        <div class="options-grid">
+          <div class="option-card" data-step="1" data-val="Acheter ma résidence principale" onclick="selectOption(this)"><div class="option-icon">🏠</div><div class="option-text"><div class="option-name">Résidence principale</div><div class="option-sub">Acheter mon logement au Maroc</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="1" data-val="Investissement immobilier" onclick="selectOption(this)"><div class="option-icon">📈</div><div class="option-text"><div class="option-name">Investissement locatif</div><div class="option-sub">Acheter pour louer ou revendre</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="1" data-val="Acheter depuis l'étranger (MRE)" onclick="selectOption(this)"><div class="option-icon">✈️</div><div class="option-text"><div class="option-name">Achat depuis l'étranger (MRE)</div><div class="option-sub">Je réside hors du Maroc</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="1" data-val="Vendre un bien immobilier" onclick="selectOption(this)"><div class="option-icon">🤝</div><div class="option-text"><div class="option-name">Vendre un bien</div><div class="option-sub">Je souhaite vendre ma propriété</div></div><div class="option-check">✓</div></div>
+        </div>
+        <div class="form-nav"><button class="btn-next" onclick="nextStep(1)">Continuer →</button></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🏢</div>
-        <div class="service-name">Entreprises</div>
-        <div class="service-desc">Constitution de société, statuts, cession de parts sociales.</div>
+
+      <!-- ÉTAPE 2 -->
+      <div class="form-step" id="step-2">
+        <div class="step-header"><div class="step-tag">Étape 2 — Financement</div><div class="step-title">Avez-vous déjà le financement ?</div></div>
+        <div class="options-grid two-col">
+          <div class="option-card" data-step="2" data-val="Fonds disponibles" onclick="selectOption(this)"><div class="option-icon">💰</div><div class="option-text"><div class="option-name">Oui, fonds disponibles</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="2" data-val="Besoin d'un crédit immobilier" onclick="selectOption(this)"><div class="option-icon">🏦</div><div class="option-text"><div class="option-name">Non, besoin d'un crédit</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="2" data-val="Financement en cours" onclick="selectOption(this)" style="grid-column:1/-1"><div class="option-icon">⏳</div><div class="option-text"><div class="option-name">En cours de financement</div><div class="option-sub">Dossier en traitement</div></div><div class="option-check">✓</div></div>
+        </div>
+        <div class="form-nav"><button class="btn-back" onclick="prevStep(2)">←</button><button class="btn-next" onclick="nextStep(2)">Continuer →</button></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">💍</div>
-        <div class="service-name">Mariage & Divorce</div>
-        <div class="service-desc">Contrat de mariage, liquidation de régime matrimonial.</div>
+
+      <!-- ÉTAPE 3 -->
+      <div class="form-step" id="step-3">
+        <div class="step-header"><div class="step-tag">Étape 3 — Le bien</div><div class="step-title">Avez-vous déjà trouvé le bien ?</div></div>
+        <div class="options-grid two-col">
+          <div class="option-card" data-step="3" data-val="Bien déjà trouvé" onclick="selectOption(this)"><div class="option-icon">✅</div><div class="option-text"><div class="option-name">Oui, j'ai trouvé</div><div class="option-sub">Je connais le bien</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="3" data-val="En recherche de bien" onclick="selectOption(this)"><div class="option-icon">🔍</div><div class="option-text"><div class="option-name">Non, en recherche</div><div class="option-sub">Je cherche encore</div></div><div class="option-check">✓</div></div>
+        </div>
+        <div class="form-nav"><button class="btn-back" onclick="prevStep(3)">←</button><button class="btn-next" onclick="nextStep(3)">Continuer →</button></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">📜</div>
-        <div class="service-name">Authentification</div>
-        <div class="service-desc">Légalisation de signatures, copies conformes, procurations.</div>
+
+      <!-- ÉTAPE 4 -->
+      <div class="form-step" id="step-4">
+        <div class="step-header"><div class="step-tag">Étape 4 — Notaire</div><div class="step-title">Avez-vous déjà un notaire ?</div></div>
+        <div class="options-grid two-col">
+          <div class="option-card" data-step="4" data-val="J'ai déjà un notaire" onclick="selectOption(this)"><div class="option-icon">⚖️</div><div class="option-text"><div class="option-name">Oui, j'ai un notaire</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="4" data-val="Recherche d'un notaire" onclick="selectOption(this)"><div class="option-icon">🔎</div><div class="option-text"><div class="option-name">Non, j'en cherche un</div></div><div class="option-check">✓</div></div>
+        </div>
+        <div class="form-nav"><button class="btn-back" onclick="prevStep(4)">←</button><button class="btn-next" onclick="nextStep(4)">Continuer →</button></div>
       </div>
-      <div class="service-card">
-        <div class="service-icon">🤝</div>
-        <div class="service-name">Contrats divers</div>
-        <div class="service-desc">Tous types d'actes notariés à valeur légale au Maroc.</div>
+
+      <!-- ÉTAPE 5 -->
+      <div class="form-step" id="step-5">
+        <div class="step-header"><div class="step-tag">Étape 5 — Accompagnement</div><div class="step-title">Quel accompagnement souhaitez-vous ?</div></div>
+        <div class="options-grid">
+          <div class="option-card" data-step="5" data-val="Crédit immobilier" onclick="selectOption(this)"><div class="option-icon">🏦</div><div class="option-text"><div class="option-name">Crédit immobilier</div><div class="option-sub">Trouver le meilleur financement</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="5" data-val="Recherche de bien" onclick="selectOption(this)"><div class="option-icon">🏡</div><div class="option-text"><div class="option-name">Recherche de bien</div><div class="option-sub">Trouver la bonne propriété</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="5" data-val="Mise en relation notaire" onclick="selectOption(this)"><div class="option-icon">⚖️</div><div class="option-text"><div class="option-name">Trouver un notaire</div><div class="option-sub">Notaire fiable et disponible</div></div><div class="option-check">✓</div></div>
+          <div class="option-card" data-step="5" data-val="Accompagnement complet" onclick="selectOption(this)"><div class="option-icon">🛡️</div><div class="option-text"><div class="option-name">Accompagnement complet</div><div class="option-sub">Du financement à la signature</div></div><div class="option-check">✓</div></div>
+        </div>
+        <div class="form-nav"><button class="btn-back" onclick="prevStep(5)">←</button><button class="btn-next" onclick="nextStep(5)">Continuer →</button></div>
+      </div>
+
+      <!-- ÉTAPE 6 : Coordonnées + envoi email -->
+      <div class="form-step" id="step-6">
+        <div class="step-header"><div class="step-tag">Étape 6 — Vos coordonnées</div><div class="step-title">Comment vous contacter ?</div></div>
+        <form id="lead-form" action="https://formspree.io/f/xkoklgyr" method="POST">
+          <input type="hidden" name="_subject" value="🏠 Nouveau lead qualifié — Notaris.ma">
+          <input type="hidden" name="_replyto" id="h-email-reply">
+          <input type="hidden" name="Projet immobilier" id="h-projet">
+          <input type="hidden" name="Situation financement" id="h-financement">
+          <input type="hidden" name="Bien trouvé" id="h-bien">
+          <input type="hidden" name="Situation notaire" id="h-notaire">
+          <input type="hidden" name="Accompagnement souhaité" id="h-accompagnement">
+          <div class="fields-grid">
+            <div class="fields-row">
+              <div class="field-group" id="fg-prenom"><label for="f-prenom">Prénom *</label><input type="text" id="f-prenom" name="Prénom" placeholder="Karim" autocomplete="given-name"></div>
+              <div class="field-group" id="fg-nom"><label for="f-nom">Nom *</label><input type="text" id="f-nom" name="Nom" placeholder="Benali" autocomplete="family-name"></div>
+            </div>
+            <div class="field-group" id="fg-phone"><label for="f-phone">Téléphone (WhatsApp) *</label><input type="tel" id="f-phone" name="Téléphone" placeholder="+212 6XX XXX XXX" autocomplete="tel"></div>
+            <div class="field-group" id="fg-email"><label for="f-email">Email *</label><input type="email" id="f-email" name="Email" placeholder="karim@email.com" autocomplete="email"></div>
+            <div class="fields-row">
+              <div class="field-group" id="fg-ville">
+                <label for="f-ville">Ville *</label>
+                <select id="f-ville" name="Ville">
+                  <option value="">Votre ville</option>
+                  <option>Casablanca</option><option>Rabat</option><option>Marrakech</option>
+                  <option>Fès</option><option>Tanger</option><option>Agadir</option>
+                  <option>Meknès</option><option>Oujda</option><option>Kenitra</option>
+                  <option>Tétouan</option><option>Autre</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <label for="f-budget">Budget estimé</label>
+                <select id="f-budget" name="Budget estimé">
+                  <option value="">Budget</option>
+                  <option>Moins de 500 000 MAD</option>
+                  <option>500 000 – 1 000 000 MAD</option>
+                  <option>1 000 000 – 2 000 000 MAD</option>
+                  <option>2 000 000 – 5 000 000 MAD</option>
+                  <option>Plus de 5 000 000 MAD</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-nav">
+            <button type="button" class="btn-back" onclick="prevStep(6)">←</button>
+            <button type="button" class="btn-submit" onclick="submitForm()">Envoyer ma demande →</button>
+          </div>
+          <p class="privacy-note">🔒 Données confidentielles — jamais revendues ni partagées.</p>
+        </form>
+      </div>
+
+      <!-- SUCCÈS -->
+      <div class="form-success" id="form-success">
+        <div class="success-icon">✓</div>
+        <h3>Demande envoyée !</h3>
+        <p>Un conseiller Notaris.ma vous contactera sous <strong>48h</strong> pour vous accompagner dans votre projet.</p>
+        <div class="success-details" id="success-summary"></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- HOW IT WORKS -->
-  <section class="how">
-    <div class="section-label">Comment ça marche</div>
-    <h2 class="section-title">Simple, rapide, gratuit</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <div class="step-title">Décrivez votre besoin</div>
-        <div class="step-desc">Remplissez le formulaire en 2 minutes avec votre situation et votre ville.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <div class="step-title">Mise en relation</div>
-        <div class="step-desc">Nous identifions le notaire agréé le plus adapté à votre dossier.</div>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <div class="step-title">Premier contact sous 48h</div>
-        <div class="step-desc">Le notaire vous contacte directement par téléphone ou WhatsApp.</div>
-      </div>
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span class="trust-icon">🔒</span><span class="trust-text">Données confidentielles</span></div>
+  <div class="trust-item"><span class="trust-icon">⚡</span><span class="trust-text">Réponse sous 48h</span></div>
+  <div class="trust-item"><span class="trust-icon">✅</span><span class="trust-text">Notaires agréés</span></div>
+  <div class="trust-item"><span class="trust-icon">🇲🇦</span><span class="trust-text">Partout au Maroc</span></div>
+  <div class="trust-item"><span class="trust-icon">🎁</span><span class="trust-text">Service 100% gratuit</span></div>
+</div>
+
+<!-- SERVICES -->
+<section class="section" id="services">
+  <div class="section-label">Nos services</div>
+  <h2 class="section-title">Un accompagnement sur-mesure</h2>
+  <p class="section-sub">De la recherche de financement à la signature finale, nous couvrons chaque étape de votre projet immobilier.</p>
+  <div class="services-grid">
+    <div class="service-card"><div class="service-icon">🏦</div><div class="service-name">Crédit immobilier</div><div class="service-desc">Comparaison des meilleures offres bancaires, montage de dossier, négociation des taux. Jusqu'à l'accord de financement.</div></div>
+    <div class="service-card"><div class="service-icon">🏡</div><div class="service-name">Recherche de bien</div><div class="service-desc">Sélection de biens selon vos critères, visites accompagnées, analyse du marché local, négociation du prix.</div></div>
+    <div class="service-card"><div class="service-icon">⚖️</div><div class="service-name">Mise en relation notaire</div><div class="service-desc">Réseau de notaires agréés, disponibles et réactifs partout au Maroc. Suivi du dossier jusqu'à la signature.</div></div>
+    <div class="service-card"><div class="service-icon">📋</div><div class="service-name">Accompagnement juridique</div><div class="service-desc">Vérification de la conformité du bien, analyse des titres de propriété, sécurisation des actes de vente.</div></div>
+    <div class="service-card"><div class="service-icon">✈️</div><div class="service-name">MRE — Achat depuis l'étranger</div><div class="service-desc">Service dédié aux Marocains résidant à l'étranger : procuration, virements DRSE, suivi à distance.</div></div>
+    <div class="service-card"><div class="service-icon">🛡️</div><div class="service-name">Accompagnement complet</div><div class="service-desc">Prise en charge totale : financement, bien, notaire et juridique. Un seul interlocuteur de A à Z.</div></div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="section section-alt" id="comment">
+  <div class="section-label">Processus</div>
+  <h2 class="section-title">Comment ça marche ?</h2>
+  <p class="section-sub">Un parcours simple et transparent, pensé pour votre tranquillité.</p>
+  <div class="steps-grid">
+    <div class="step-item"><div class="step-num">1</div><div class="step-name">Votre projet</div><div class="step-desc">Décrivez votre situation en 2 minutes via notre formulaire intelligent.</div></div>
+    <div class="step-item"><div class="step-num">2</div><div class="step-name">Analyse</div><div class="step-desc">Nous analysons votre dossier et identifions les meilleures solutions.</div></div>
+    <div class="step-item"><div class="step-num">3</div><div class="step-name">Mise en relation</div><div class="step-desc">Un expert dédié vous est assigné selon votre profil et votre ville.</div></div>
+    <div class="step-item"><div class="step-num">4</div><div class="step-name">Accompagnement</div><div class="step-desc">Suivi personnalisé à chaque étape : crédit, notaire, actes notariaux.</div></div>
+    <div class="step-item"><div class="step-num">5</div><div class="step-name">Signature</div><div class="step-desc">Signature chez le notaire, transfert de propriété sécurisé. Félicitations !</div></div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-label">FAQ</div>
+  <h2 class="section-title">Questions fréquentes</h2>
+  <p class="section-sub">Tout ce que vous devez savoir avant de démarrer.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Le service Notaris.ma est-il vraiment gratuit ?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Oui, la mise en relation et l'accompagnement initial sont entièrement gratuits pour vous. Notaris.ma est rémunéré par ses partenaires uniquement en cas de transaction finalisée.</div>
     </div>
-  </section>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Dans quelles villes êtes-vous disponibles ?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Nous couvrons l'ensemble du territoire marocain : Casablanca, Rabat, Marrakech, Fès, Tanger, Agadir, Meknès, Oujda, Kenitra et toutes les autres villes via notre réseau de partenaires.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Je suis MRE, pouvez-vous m'aider depuis l'étranger ?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Absolument. Nous gérons les procurations, les virements DRSE, la correspondance avec les notaires et les visites de biens en votre nom.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Combien de temps prend l'accompagnement ?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Un premier contact a lieu sous 48h. La durée complète varie : de quelques semaines pour un achat avec fonds propres, à quelques mois pour un dossier de crédit complet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggleFaq(this)">Mes données personnelles sont-elles sécurisées ?<span class="faq-arrow">+</span></div>
+      <div class="faq-a">Vos données sont strictement confidentielles. Elles ne sont jamais revendues et transmises uniquement aux partenaires concernés par votre dossier, avec votre accord.</div>
+    </div>
+  </div>
+</section>
 
-  <!-- CTA -->
-  <section class="cta-section">
-    <div class="cta-title">Prêt à démarrer votre démarche ?</div>
-    <div class="cta-sub">Décrivez votre besoin en 2 minutes, nous faisons le reste.</div>
-    <a href="#formulaire" class="cta-btn">Trouver mon notaire maintenant</a>
-  </section>
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-title">Prêt à démarrer votre projet ?</div>
+  <div class="cta-sub">Décrivez votre situation en 2 minutes. Nous faisons le reste.</div>
+  <a href="#demarrer" class="cta-btn">Démarrer mon projet immobilier →</a>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div><strong>notaris.ma</strong> — La référence notariale au Maroc</div>
-    <div>
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-logo">notaris<span>.</span>ma</div>
+    <div class="footer-tagline">De l'idée d'acheter jusqu'à<br>la signature chez le notaire.</div>
+  </div>
+  <div>
+    <div class="footer-col-title">Services</div>
+    <div class="footer-links">
+      <a href="#services">Crédit immobilier</a>
+      <a href="#services">Recherche de bien</a>
+      <a href="#services">Trouver un notaire</a>
+      <a href="#services">Accompagnement MRE</a>
+      <a href="#services">Accompagnement complet</a>
+    </div>
+  </div>
+  <div>
+    <div class="footer-col-title">Contact</div>
+    <div class="footer-links">
       <a href="mailto:contact@notaris.ma">contact@notaris.ma</a>
+      <a href="https://wa.me/212600000000">WhatsApp</a>
+      <a href="#faq">FAQ</a>
+      <a href="#demarrer">Démarrer mon projet</a>
     </div>
-    <div>© 2026 Notaris.ma — Tous droits réservés</div>
-  </footer>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Notaris.ma — Tous droits réservés</span>
+  <span>Plateforme d'accompagnement immobilier au Maroc</span>
+</div>
 
-  <!-- WHATSAPP FLOAT -->
-  <a href="https://wa.me/212664440944?text=Bonjour%2C%20je%20cherche%20un%20notaire%20au%20Maroc." class="wa-float" target="_blank" rel="noopener" title="Contactez-nous sur WhatsApp">
-    💬
-  </a>
+<!-- WHATSAPP BUTTON (large) -->
+<a href="https://wa.me/212664440944?text=Bonjour%2C%20je%20souhaite%20être%20accompagné%20dans%20mon%20projet%20immobilier%20au%20Maroc." class="wa-float" target="_blank" rel="noopener" aria-label="Contacter Notaris.ma sur WhatsApp">
+  <svg xmlns="http://www.w3.org/2000/svg" width="38" height="38" viewBox="0 0 24 24" fill="white">
+    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+  </svg>
+  <span class="wa-tooltip">Nous écrire sur WhatsApp</span>
+</a>
 
-  <script>
-    function handleSubmit() {
-      var name = document.getElementById('f-name');
-      var phone = document.getElementById('f-phone');
-      var city = document.getElementById('f-city');
-      var type = document.getElementById('f-type');
-      var valid = true;
+<script>
+  var answers = { projet:'', financement:'', bien:'', notaire:'', accompagnement:'' };
+  var stepKeys = ['','projet','financement','bien','notaire','accompagnement'];
 
-      [name, phone, city, type].forEach(function(field) {
-        var err = field.parentNode.querySelector('.error-msg');
-        if (err) err.remove();
-        field.classList.remove('field-error');
-      });
+  function updateProgress(step) {
+    var pct = Math.round((step / 6) * 100);
+    document.getElementById('progress-fill').style.width = pct + '%';
+    document.getElementById('step-label').textContent = 'Étape ' + step + ' sur 6';
+    document.getElementById('step-pct').textContent = pct + '%';
+  }
 
-      if (!name.value.trim()) { showError(name, 'Ce champ est requis'); valid = false; }
-      if (!phone.value.trim()) { showError(phone, 'Ce champ est requis'); valid = false; }
-      if (!city.value) { showError(city, 'Veuillez sélectionner une ville'); valid = false; }
-      if (!type.value) { showError(type, 'Veuillez sélectionner un type de démarche'); valid = false; }
+  function selectOption(el) {
+    var step = el.getAttribute('data-step');
+    document.querySelectorAll('[data-step="'+step+'"]').forEach(function(c){c.classList.remove('selected');});
+    el.classList.add('selected');
+    var key = stepKeys[parseInt(step)];
+    if (key) answers[key] = el.getAttribute('data-val');
+  }
 
-      if (!valid) return;
+  function nextStep(from) {
+    if (from < 6 && !answers[stepKeys[from]]) { alert('Veuillez sélectionner une option pour continuer.'); return; }
+    document.getElementById('step-'+from).classList.remove('active');
+    document.getElementById('step-'+(from+1)).classList.add('active');
+    updateProgress(from+1);
+    document.getElementById('demarrer').scrollIntoView({behavior:'smooth', block:'start'});
+  }
 
-      // Ici vous pouvez envoyer les données à un service comme Formspree :
-      // fetch('https://formspree.io/f/VOTRE_ID', { method: 'POST', ... })
+  function prevStep(from) {
+    document.getElementById('step-'+from).classList.remove('active');
+    document.getElementById('step-'+(from-1)).classList.add('active');
+    updateProgress(from-1);
+  }
 
-      document.getElementById('form-content').style.display = 'none';
-      document.getElementById('success-msg').style.display = 'block';
-    }
+  function submitForm() {
+    var valid = true;
+    var required = [
+      {id:'f-prenom', fg:'fg-prenom', msg:'Prénom requis'},
+      {id:'f-nom',    fg:'fg-nom',    msg:'Nom requis'},
+      {id:'f-phone',  fg:'fg-phone',  msg:'Téléphone requis'},
+      {id:'f-email',  fg:'fg-email',  msg:'Email requis'},
+      {id:'f-ville',  fg:'fg-ville',  msg:'Ville requise'}
+    ];
+    required.forEach(function(f) {
+      var el = document.getElementById(f.id);
+      var fg = document.getElementById(f.fg);
+      if (fg) { var p = fg.querySelector('.field-error-msg'); if(p) p.remove(); fg.classList.remove('error'); }
+      if (!el.value.trim()) {
+        valid = false;
+        if (fg) { fg.classList.add('error'); var s = document.createElement('span'); s.className='field-error-msg'; s.textContent=f.msg; fg.appendChild(s); }
+      }
+    });
+    if (!valid) return;
 
-    function showError(field, msg) {
-      field.classList.add('field-error');
-      var span = document.createElement('span');
-      span.className = 'error-msg';
-      span.textContent = msg;
-      field.parentNode.appendChild(span);
-    }
-  </script>
+    // Populate hidden qualifying fields
+    document.getElementById('h-projet').value        = answers.projet;
+    document.getElementById('h-financement').value   = answers.financement;
+    document.getElementById('h-bien').value          = answers.bien;
+    document.getElementById('h-notaire').value       = answers.notaire;
+    document.getElementById('h-accompagnement').value= answers.accompagnement;
+    document.getElementById('h-email-reply').value   = document.getElementById('f-email').value;
 
+    var prenom = document.getElementById('f-prenom').value;
+    var nom    = document.getElementById('f-nom').value;
+    var phone  = document.getElementById('f-phone').value;
+    var email  = document.getElementById('f-email').value;
+    var ville  = document.getElementById('f-ville').value;
+    var budget = document.getElementById('f-budget').value;
+
+    var form = document.getElementById('lead-form');
+
+    // Envoi via Formspree vers contact@notaris.ma
+    fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(function(r) { showSuccess(prenom, nom, phone, email, ville, budget); })
+    .catch(function()  { showSuccess(prenom, nom, phone, email, ville, budget); });
+  }
+
+  function showSuccess(prenom, nom, phone, email, ville, budget) {
+    document.getElementById('step-6').classList.remove('active');
+    var s = document.getElementById('form-success');
+    s.style.display = 'block';
+    var b = budget ? '<br><strong>Budget :</strong> ' + budget : '';
+    document.getElementById('success-summary').innerHTML =
+      '<strong>Projet :</strong> '           + answers.projet +
+      '<br><strong>Financement :</strong> '  + answers.financement +
+      '<br><strong>Accompagnement :</strong> '+ answers.accompagnement +
+      '<br><strong>Contact :</strong> '      + prenom + ' ' + nom + ' — ' + phone +
+      '<br><strong>Ville :</strong> '        + ville + b;
+    updateProgress(6);
+  }
+
+  function toggleFaq(el) {
+    var item = el.parentElement;
+    var was = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(function(i){i.classList.remove('open');});
+    if (!was) item.classList.add('open');
+  }
+</script>
 </body>
 </html>
