@@ -93,10 +93,26 @@
     <div class="admin-badge-login">ADMINISTRATION</div>
     <div class="login-title">Accès sécurisé</div>
     <div class="login-sub">Réservé à l'équipe Notaris.ma</div>
-    <div class="field-g"><label>Email admin</label><input type="email" id="a-email" placeholder="admin@notaris.ma" autocomplete="email"></div>
-    <div class="field-g"><label>Mot de passe</label><input type="password" id="a-pass" placeholder="••••••••" autocomplete="current-password"></div>
-    <button class="login-btn" id="btn-admin-login" onclick="doAdminLogin()">Accéder au dashboard →</button>
-    <div id="admin-err"></div>
+    <div id="tab-login-admin">
+      <div class="field-g"><label>Email admin</label><input type="email" id="a-email" placeholder="" autocomplete="email"></div>
+      <div class="field-g"><label>Mot de passe</label><input type="password" id="a-pass" placeholder="••••••••" autocomplete="current-password" onkeypress="if(event.key==='Enter')doAdminLogin()"></div>
+      <button class="login-btn" id="btn-admin-login" onclick="doAdminLogin()">Accéder au dashboard →</button>
+      <div id="admin-err"></div>
+      <div style="text-align:center;margin-top:.85rem">
+        <a href="#" onclick="showAdminReset()" style="font-size:12px;color:var(--muted);text-decoration:none">Mot de passe oublié ?</a>
+      </div>
+    </div>
+    <div id="tab-reset-admin" style="display:none">
+      <div style="font-size:13px;color:var(--muted);margin-bottom:1rem;line-height:1.6">
+        Entrez votre email admin pour recevoir un lien de réinitialisation.
+      </div>
+      <div class="field-g"><label>Email admin</label><input type="email" id="reset-admin-email" placeholder="contact@notaris.ma"></div>
+      <button class="login-btn" onclick="doAdminReset()">Envoyer le lien →</button>
+      <div id="admin-reset-msg"></div>
+      <div style="text-align:center;margin-top:.85rem">
+        <a href="#" onclick="showAdminLogin()" style="font-size:12px;color:var(--muted);text-decoration:none">← Retour à la connexion</a>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -235,12 +251,35 @@ var allLeads = [];
 
 document.getElementById('dash-date').textContent = new Date().toLocaleDateString('fr-FR',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
 
+function showAdminReset() {
+  document.getElementById('tab-login-admin').style.display = 'none';
+  document.getElementById('tab-reset-admin').style.display = 'block';
+}
+function showAdminLogin() {
+  document.getElementById('tab-reset-admin').style.display = 'none';
+  document.getElementById('tab-login-admin').style.display = 'block';
+}
+async function doAdminReset() {
+  var email = document.getElementById('reset-admin-email').value.trim();
+  var msgEl = document.getElementById('admin-reset-msg');
+  msgEl.innerHTML = '';
+  if (!email) { msgEl.innerHTML = '<div class="err-msg">Veuillez entrer votre email.</div>'; return; }
+  var res = await sb.auth.resetPasswordForEmail(email, {
+    redirectTo: window.location.origin + '/admin.html'
+  });
+  if (res.error) {
+    msgEl.innerHTML = '<div class="err-msg">' + res.error.message + '</div>';
+  } else {
+    msgEl.innerHTML = '<div style="font-size:12px;color:#166534;text-align:center;margin-top:8px;padding:8px;background:#f0fdf4;border-radius:7px">✓ Email envoyé ! Vérifiez votre boîte mail.</div>';
+  }
+}
 async function doAdminLogin() {
   var email = document.getElementById('a-email').value.trim();
   var pass  = document.getElementById('a-pass').value;
   var errEl = document.getElementById('admin-err');
   var btn   = document.getElementById('btn-admin-login');
   errEl.innerHTML = '';
+  if (!email || !pass) { errEl.innerHTML = '<div class="err-msg">Veuillez remplir tous les champs.</div>'; return; }
   btn.disabled = true; btn.textContent = 'Connexion…';
   var res = await sb.auth.signInWithPassword({ email:email, password:pass });
   btn.disabled = false; btn.textContent = 'Accéder au dashboard →';
